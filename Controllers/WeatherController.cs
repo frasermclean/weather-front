@@ -26,12 +26,12 @@ namespace WeatherFront.Controllers
         [HttpGet]
         [ProducesResponseType(typeof(WeatherState), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(typeof(string), StatusCodes.Status401Unauthorized)]
         public async Task<ActionResult<WeatherState>> GetWeatherStateAsync([FromBody] WeatherRequestBody body)
         {
             // validate api key
-            if (!keyService.IsKeyDefined(body.ApiKey))
-                return Unauthorized("Invalid API key specified.");
+            var (success, message) = keyService.UseKey(body.ApiKey);
+            if (!success)
+                return BadRequest(message);
 
             // use service to look up current weather state
             WeatherState state = await weatherService.GetWeatherAsync(body.City, body.Country);

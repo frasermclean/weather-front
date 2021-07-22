@@ -6,7 +6,8 @@ namespace WeatherFront.Configuration
     {
         public const string Section = "KeyService";
 
-        public int RequestsPerHour { get; init; }
+        public int RequestLimit { get; init; }
+        public int ExpirySeconds { get; init; }
         public HashSet<string> ValidKeys { get; init; }
     }
 }

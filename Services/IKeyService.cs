@@ -3,10 +3,11 @@
     public interface IKeyService
     {
         /// <summary>
-        /// Returns true if specified API key is known.
+        /// Attempt to use the specified API key.
         /// </summary>
         /// <param name="key">The API key to look up.</param>
-        /// <returns>True if known, false if not.</returns>
-        bool IsKeyDefined(string key);
+        /// <returns>A bool, string tuple with the bool indicating success. If there is an error,
+        /// the string will contain details.</returns>
+        (bool, string) UseKey(string key);
     }
 }
