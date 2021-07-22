@@ -19,7 +19,10 @@ namespace WeatherFront
         
         public void ConfigureServices(IServiceCollection services)
         {
+            // add application services
             services.AddSingleton<IWeatherService, OpenWeatherService>();
+            services.AddSingleton<IKeyService, KeyService>();
+
             services.AddHttpClient(); // add http client to make outgoing requests
             services.AddControllers();
             services.AddRouting(options => options.LowercaseUrls = true); // configure routes to use lowercase names

@@ -9,10 +9,12 @@ namespace WeatherFront.Controllers
     public class WeatherController : ApiController
     {
         private readonly IWeatherService weatherService;
+        private readonly IKeyService keyService;
 
-        public WeatherController(IWeatherService weatherService)
+        public WeatherController(IWeatherService weatherService, IKeyService keyService)
         {
             this.weatherService = weatherService;
+            this.keyService = keyService;
         }
 
         /// <summary>
@@ -24,17 +26,16 @@ namespace WeatherFront.Controllers
         [HttpGet]
         [ProducesResponseType(typeof(WeatherState), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<WeatherState>> GetWeatherStateAsync([FromQuery] string city, [FromQuery] string country)
+        [ProducesResponseType(typeof(string), StatusCodes.Status401Unauthorized)]
+        public async Task<ActionResult<WeatherState>> GetWeatherStateAsync([FromBody] WeatherRequestBody body)
         {
-            // validate required query parameters
-            if (string.IsNullOrEmpty(city))
-                return BadRequest("City name was not specified.");
-            if (string.IsNullOrEmpty(country))
-                return BadRequest("Country code was not specified.");
+            // validate api key
+            if (!keyService.IsKeyDefined(body.ApiKey))
+                return Unauthorized("Invalid API key specified.");
 
             // use service to look up current weather state
-            WeatherState state = await weatherService.GetWeatherAsync(city, country);
-            return state != null ? Ok(state) : NotFound($"Could not find a city with name: {city} in country code: {country}.");
+            WeatherState state = await weatherService.GetWeatherAsync(body.City, body.Country);
+            return state != null ? Ok(state) : NotFound($"Could not find a city with name: {body.City} in country code: {body.Country}.");
         }
     }
 }
