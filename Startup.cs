@@ -28,6 +28,7 @@ namespace WeatherFront
         {
 
             services.AddControllers();
+            services.AddRouting(options => options.LowercaseUrls = true);
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WeatherFront", Version = "v1" });
