@@ -24,7 +24,7 @@ namespace WeatherFront.Controllers
         [HttpGet]
         [ProducesResponseType(typeof(WeatherState), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<WeatherState>> GetWeather([FromQuery] string city, [FromQuery] string country)
+        public async Task<ActionResult<WeatherState>> GetWeatherStateAsync([FromQuery] string city, [FromQuery] string country)
         {
             // validate required query parameters
             if (string.IsNullOrEmpty(city))
@@ -32,9 +32,9 @@ namespace WeatherFront.Controllers
             if (string.IsNullOrEmpty(country))
                 return BadRequest("Country code was not specified.");
 
-            var result = await weatherService.GetWeatherAsync(city, country);
-
-            return Ok(result);
+            // use service to look up current weather state
+            WeatherState state = await weatherService.GetWeatherAsync(city, country);
+            return state != null ? Ok(state) : NotFound($"Could not find a city with name: {city} in country code: {country}.");
         }
     }
 }

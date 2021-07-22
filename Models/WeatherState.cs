@@ -4,7 +4,7 @@
     {
         public string City { get; init; }
         public string Country { get; set; }
-        public float Temperature { get; init; }
+        public double Temperature { get; init; }
         public string Description { get; init; }
     }
 }
