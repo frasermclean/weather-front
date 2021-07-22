@@ -1,11 +1,20 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 using WeatherFront.Models;
+using WeatherFront.Services;
 
 namespace WeatherFront.Controllers
 {
     public class WeatherController : ApiController
     {
+        private readonly IWeatherService weatherService;
+
+        public WeatherController(IWeatherService weatherService)
+        {
+            this.weatherService = weatherService;
+        }
+
         /// <summary>
         /// Get the current weather state for the specified city.
         /// </summary>
@@ -15,7 +24,7 @@ namespace WeatherFront.Controllers
         [HttpGet]
         [ProducesResponseType(typeof(WeatherState), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
-        public ActionResult<WeatherState> GetWeather([FromQuery]string city, [FromQuery]string country)
+        public async Task<ActionResult<WeatherState>> GetWeather([FromQuery] string city, [FromQuery] string country)
         {
             // validate required query parameters
             if (string.IsNullOrEmpty(city))
@@ -23,13 +32,9 @@ namespace WeatherFront.Controllers
             if (string.IsNullOrEmpty(country))
                 return BadRequest("Country code was not specified.");
 
-            return Ok(new WeatherState()
-            {
-                City = city,
-                Country = country,
-                Description = "Pretty good",
-                Temperature = 23.0f,
-            });
+            var result = await weatherService.GetWeatherAsync(city, country);
+
+            return Ok(result);
         }
     }
 }
