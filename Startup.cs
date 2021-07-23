@@ -16,7 +16,7 @@ namespace WeatherFront
         }
 
         public IConfiguration Configuration { get; }
-        
+
         public void ConfigureServices(IServiceCollection services)
         {
             // add application services
@@ -30,8 +30,18 @@ namespace WeatherFront
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WeatherFront", Version = "v1" });
             });
+
+            // add cors policy to enable different origin for client app
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                    builder => builder.WithOrigins("http://localhost:4200")
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .AllowCredentials());
+            });
         }
-        
+
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
@@ -42,9 +52,8 @@ namespace WeatherFront
             }
 
             app.UseHttpsRedirection();
-
             app.UseRouting();
-
+            app.UseCors("CorsPolicy");
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
