@@ -23,10 +23,10 @@ namespace WeatherFront.Controllers
         /// <param name="city">The name of the city to look up.</param>
         /// <param name="country">The 2 digit country code in which the city is located.</param>
         /// <returns></returns>
-        [HttpGet]
+        [HttpPost]
         [ProducesResponseType(typeof(WeatherState), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<WeatherState>> GetWeatherStateAsync([FromBody] WeatherRequestBody body)
+        public async Task<ActionResult<WeatherState>> LookupWeatherStateAsync([FromBody] WeatherRequestBody body)
         {
             // validate api key
             var (success, message) = keyService.UseKey(body.ApiKey);
