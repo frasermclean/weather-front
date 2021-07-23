@@ -1,32 +1,35 @@
-<mat-card>
-  <mat-card-header>
-    <mat-card-title>City Lookup</mat-card-title>
-    <mat-card-subtitle>Enter the details of the city you wish to look up.</mat-card-subtitle>
-  </mat-card-header>
-  <mat-card-content>
-    <form [formGroup]="formGroup">
-      <mat-form-field appearance="fill">
-        <input matInput type="text" placeholder="City Name" formControlName="city" required />
-        <mat-icon matSuffix>location_city</mat-icon>
-        <mat-hint>Enter the full name of the city you wish to look up (e.g. Melbourne)</mat-hint>
-        <!-- <mat-error *ngIf="formGroup.get('city').invalid">Please enter a name of a city.</mat-error> -->
-      </mat-form-field>
+<div class="main-container">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>City Lookup</mat-card-title>
+      <mat-card-subtitle>Enter the details of the city you wish to look up.</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="formGroup">
+        <mat-form-field appearance="fill">
+          <input matInput type="text" placeholder="City Name" formControlName="city" required />
+          <mat-icon matSuffix>location_city</mat-icon>
+          <mat-hint>Enter the full name of the city you wish to look up (e.g. Melbourne)</mat-hint>
+          <!-- <mat-error *ngIf="formGroup.get('city').invalid">Please enter a name of a city.</mat-error> -->
+        </mat-form-field>
 
-      <mat-form-field appearance="fill">
-        <input matInput type="text" placeholder="Country Code" formControlName="country" required />
-        <mat-icon matSuffix>flag</mat-icon>
-        <mat-hint>Enter the 2 digit country code in which the city is located.</mat-hint>
-        <!-- <mat-error *ngIf="formGroup.get('city').invalid">Please enter a name of a city.</mat-error> -->
-      </mat-form-field>
-    </form>
+        <mat-form-field appearance="fill">
+          <input matInput type="text" placeholder="Country Code" formControlName="country" required />
+          <mat-icon matSuffix>flag</mat-icon>
+          <mat-hint>Enter the 2 digit country code in which the city is located.</mat-hint>
+          <!-- <mat-error *ngIf="formGroup.get('city').invalid">Please enter a name of a city.</mat-error> -->
+        </mat-form-field>
+      </form>
 
-  </mat-card-content>
-  <mat-card-actions>
-    <form [formGroup]="formGroup" (submit)="onSubmit()">
-      <button mat-raised-button color="accent" type="submit" [disabled]="formGroup.invalid">SUBMIT</button>
-      <button mat-raised-button type="reset" [disabled]="!formGroup.touched">RESET</button>
-    </form>
+    </mat-card-content>
+    <mat-card-actions>
+      <form [formGroup]="formGroup" (submit)="onSubmit()">
+        <button mat-raised-button color="accent" type="submit" [disabled]="formGroup.invalid">SUBMIT</button>
+        <button mat-raised-button type="reset" [disabled]="!formGroup.touched">RESET</button>
+      </form>
 
-  </mat-card-actions>
-</mat-card>
+    </mat-card-actions>
+  </mat-card>
+</div>
+
 

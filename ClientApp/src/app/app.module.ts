@@ -14,12 +14,14 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './components/header/header.component';
 import { InputFormComponent } from './components/input-form/input-form.component';
+import { ResultViewComponent } from './components/result-view/result-view.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    InputFormComponent
+    InputFormComponent,
+    ResultViewComponent
   ],
   imports: [
     BrowserModule,
