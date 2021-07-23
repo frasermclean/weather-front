@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 // angular material modules
 import { MatCardModule } from '@angular/material/card';
@@ -21,12 +22,13 @@ import { ResultViewComponent } from './components/result-view/result-view.compon
     AppComponent,
     HeaderComponent,
     InputFormComponent,
-    ResultViewComponent
+    ResultViewComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
+    HttpClientModule,
     MatCardModule,
     MatIconModule,
     MatFormFieldModule,
@@ -35,6 +37,6 @@ import { ResultViewComponent } from './components/result-view/result-view.compon
     MatButtonModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

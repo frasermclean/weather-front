@@ -1,11 +1,11 @@
 <div class="main-container">
-  <mat-card *ngIf="data">
+  <mat-card *ngIf="state$ | async as state">
     <mat-card-header>
-      <mat-card-title>{{ data.city }}</mat-card-title>
-      <mat-card-subtitle>Current temperature: {{data.temperature }}&deg;C</mat-card-subtitle>
+      <mat-card-title>{{ state.city }}</mat-card-title>
+      <mat-card-subtitle>Current temperature: {{state.temperature }}&deg;C</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
-      <h2 class="description">{{data.description}}</h2>
+      <h2 class="description">{{state.description}}</h2>
     </mat-card-content>
 
   </mat-card>
