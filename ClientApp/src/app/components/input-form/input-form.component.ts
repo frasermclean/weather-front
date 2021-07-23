@@ -31,8 +31,11 @@ export class InputFormComponent implements OnInit {
       city: this.formGroup.value.city,
       country: this.formGroup.value.country,
       apiKey: environment.apiKey,
-
-    }
+    };
     this.weatherService.getWeather(req);
+  }
+
+  onReset() {
+    this.weatherService.reset();
   }
 }

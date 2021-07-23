@@ -10,9 +10,11 @@ import { WeatherService } from 'src/app/services/weather.service';
 })
 export class ResultViewComponent implements OnInit {
   state$: Observable<WeatherState>;
+  busy$: Observable<boolean>;
 
   constructor(private weatherService: WeatherService) {
     this.state$ = this.weatherService.state$;
+    this.busy$ = this.weatherService.busy$;
   }
 
   ngOnInit(): void {}

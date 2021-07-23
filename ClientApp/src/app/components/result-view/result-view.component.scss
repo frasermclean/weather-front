@@ -2,3 +2,11 @@
   padding: 16px;
   text-align: center;
 }
+
+.spinner-container {
+  width: 100%;
+  margin-top: 32px;
+  mat-spinner {
+    margin: auto;
+  }
+}

@@ -25,7 +25,7 @@
     <mat-card-actions>
       <form [formGroup]="formGroup" (submit)="onSubmit()">
         <button mat-raised-button color="accent" type="submit" [disabled]="formGroup.invalid">SUBMIT</button>
-        <button mat-raised-button type="reset" [disabled]="!formGroup.touched">RESET</button>
+        <button mat-raised-button type="reset" [disabled]="!formGroup.touched" (click)="onReset()">RESET</button>
       </form>
 
     </mat-card-actions>

@@ -1,4 +1,8 @@
 <div class="main-container">
+  <div class="spinner-container" *ngIf="busy$ | async">
+    <mat-spinner></mat-spinner>
+  </div>
+
   <mat-card *ngIf="state$ | async as state">
     <mat-card-header>
       <mat-card-title>{{ state.city }}</mat-card-title>
