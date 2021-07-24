@@ -3,9 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31515.178
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherFront", "WeatherFront.csproj", "{7925123A-E1AD-4FE3-AD44-BEA8546FC28A}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{884F1CE6-86AB-4BD6-9673-4D428ECC555E}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		README.md = README.md
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherFrontTest", "..\WeatherFrontTest\WeatherFrontTest.csproj", "{FC9E8BE8-C021-4ABC-88C3-7B8473636A13}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherFrontTest", "WeatherFrontTest\WeatherFrontTest.csproj", "{C2197538-622B-41E9-9891-C9F337193FCA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherFront", "WeatherFront\WeatherFront.csproj", "{78A54FF1-D001-4A07-9533-64AE4B15E290}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,14 +19,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{7925123A-E1AD-4FE3-AD44-BEA8546FC28A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7925123A-E1AD-4FE3-AD44-BEA8546FC28A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7925123A-E1AD-4FE3-AD44-BEA8546FC28A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7925123A-E1AD-4FE3-AD44-BEA8546FC28A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FC9E8BE8-C021-4ABC-88C3-7B8473636A13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FC9E8BE8-C021-4ABC-88C3-7B8473636A13}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FC9E8BE8-C021-4ABC-88C3-7B8473636A13}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FC9E8BE8-C021-4ABC-88C3-7B8473636A13}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2197538-622B-41E9-9891-C9F337193FCA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2197538-622B-41E9-9891-C9F337193FCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2197538-622B-41E9-9891-C9F337193FCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2197538-622B-41E9-9891-C9F337193FCA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78A54FF1-D001-4A07-9533-64AE4B15E290}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78A54FF1-D001-4A07-9533-64AE4B15E290}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78A54FF1-D001-4A07-9533-64AE4B15E290}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78A54FF1-D001-4A07-9533-64AE4B15E290}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
