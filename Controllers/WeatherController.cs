@@ -26,9 +26,14 @@ namespace WeatherFront.Controllers
         [HttpPost]
         [ProducesResponseType(typeof(WeatherState), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(string), StatusCodes.Status401Unauthorized)]
         public async Task<ActionResult<WeatherState>> LookupWeatherStateAsync([FromBody] WeatherRequestBody body)
         {
-            // validate api key
+            // validate that api key exists
+            if (!keyService.IsKeyKnown(body.ApiKey))
+                return Unauthorized($"Unknown API key: {body.ApiKey}");
+
+            // attempt to use the API key
             var (success, message) = keyService.UseKey(body.ApiKey);
             if (!success)
                 return BadRequest(message);

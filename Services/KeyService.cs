@@ -40,13 +40,18 @@ namespace WeatherFront.Services
             this.logger = logger;
         }
 
+        public bool IsKeyKnown(string key)
+        {
+            return ValidKeys.Contains(key);
+        }
+
         public (bool, string) UseKey(string key)
         {
             logger.LogInformation($"Validating authorization of API key: {key}");
             string message;
 
             // check that key is valid
-            if (!ValidKeys.Contains(key))
+            if (!IsKeyKnown(key))
             {
                 message = $"Specified API key: {key} was not found";
                 logger.LogWarning(message);
