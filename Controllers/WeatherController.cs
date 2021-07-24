@@ -40,7 +40,9 @@ namespace WeatherFront.Controllers
 
             // use service to look up current weather state
             WeatherState state = await weatherService.GetWeatherAsync(body.City, body.Country);
-            return state != null ? Ok(state) : NotFound($"Could not find a city with name: {body.City} in country code: {body.Country}.");
+            return state != null ? 
+                Ok(state) : 
+                NotFound($"Could not find a city with name: {body.City} in country code: {body.Country}.");
         }
     }
 }
